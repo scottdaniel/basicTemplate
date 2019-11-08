@@ -1,0 +1,41 @@
+
+<!-- "Child" report do not have Yaml or knitr blocks -->
+<!-- See this post for details: https://martinctc.github.io/blog/first-world-problems-very-long-rmarkdown-documents/ -->
+<!-- BONUS: rejoice! all libraries and functions are inherited from the "mother" -->
+
+```{r child_specific_functions}
+
+```
+
+```{r child_specific_libraries}
+
+```
+
+# Introduction for child report
+
+sic incipit
+
+```{r your_code_here}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+quod erat demonstrandum

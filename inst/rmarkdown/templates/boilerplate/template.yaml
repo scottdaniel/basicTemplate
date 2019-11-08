@@ -1,0 +1,6 @@
+name: Basic template for bioinformatics anlaysis
+description: >
+   Most basic bioinformatics template.
+    Use at your own risk.
+    YMMV.
+create_dir: true

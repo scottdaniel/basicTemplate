@@ -1,0 +1,129 @@
+---
+title: "Title"
+author: "Author"
+date: \today
+geometry: margin=3cm
+output: 
+    pdf_document:
+        keep_tex: true
+        toc: true
+        toc_depth: 3
+---
+
+<!-- knitr setup -->
+```{r knitr setup, echo=FALSE}
+### ================
+###   knitr setup
+### ================
+library(knitr)
+knitr::opts_chunk$set(
+	echo = FALSE,
+	fig.width=8,
+  fig.height=8,
+	fig.align = "center",
+	message = FALSE,
+	warning = FALSE,
+	cache = TRUE,
+	dpi = 100,
+	tidy = FALSE
+)
+```
+<!-- End, knitr setup -->
+
+<!-- R packages -->
+```{r R packages, message=FALSE, warning=FALSE}
+### ================
+###   R packages
+### ================
+#easier file path getting (NEVER use root_dir or setwd() AGAIN!)
+library(here)
+#This package will also help us more easily manipulate our data
+library(tidyverse)
+#So we can use %$% too
+library(magrittr)
+#for melt and cast in case we don't want to use gather and spread
+library(reshape2)
+#used often for diversity measurments
+library(usedist)
+library(vegan)
+library(ape)
+#graphing for greatness (and Faber!)
+library(ggbeeswarm)
+library(grid)
+library(pheatmap)
+library(RColorBrewer)
+library(viridis)
+#Süß tables
+library(pander)
+#We keep a lot of our metadata in Qiime-compatible format
+library(qiimer)
+
+```
+<!-- End, R packages -->
+
+<!-- user defined functions -->
+```{r functions}
+
+source(here::here("common_functions.R"))
+
+```
+<!-- End, user defined functions -->
+
+<!-- Defined constants -->
+```{r define constants}
+### ===========================
+###   define constants
+### ===========================
+
+# With the "here" package, we never have to worry about paths again!
+
+### rawdata
+data_fp <- here::here("Data","my_data.tsv")
+
+### metadata
+metadata_fp <- here::here("Data","my_metadata.tsv")
+
+```
+<!-- End, Defined constants -->
+
+<!-- Load data -->
+```{r loading data}
+
+raw_data <- read_tsv(data_fp)
+
+raw_md <- read_tsv(metadata_fp) %>%
+  mutate(SampleID = as.character(SampleID))
+
+# if qiime-compatible
+# raw_data <- read_qiime_otu_table(data_fp)
+# raw_md <- read_qiime_mapping_file(metadata_fp)
+
+```
+<!-- End, Load data -->
+
+<!-- Begin, Children reports -->
+```{r eval=FALSE, child=here::here("you_child_report_here.Rmd"), include=FALSE}
+
+#Don't put any code here
+#This is simply a placeholder that instructs this "mother"
+#report to append the "child" report
+#"Child" report do not have Yaml or knitr blocks
+#See this post for details: https://martinctc.github.io/blog/first-world-problems-very-long-rmarkdown-documents/
+
+```
+<!-- End, Children reports -->
+
+```{r Generate time stamped report, eval=FALSE, include=FALSE}
+#notes
+#neat: you can run this following command in the console to give your reports custom names (or date-stamp them)
+#rmarkdown::render('Report_shotgun.Rmd',output_file = paste('blabla.report.', Sys.Date(), '.pdf', sep=''))
+
+script_dir <- file.path("Scripts","Rmds")
+output_dir <- file.path("Output")
+
+report_fp <- here::here(script_dir, "[this_file].Rmd")
+output_fp <- here::here(output_dir, paste('[name_of_project].report.', Sys.Date(), '.pdf', sep=''))
+
+rmarkdown::render(report_fp, output_file = output_fp)
+
+```
