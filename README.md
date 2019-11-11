@@ -2,6 +2,8 @@
 
 The most basic bioinformatics R markdown template.
 
+This project was created by following this [guide](https://rstudio.github.io/rstudio-extensions/rmarkdown_templates.html) from the friendly folks at Rstudio Inc.
+
 Uses the setup paradigm of "mother" and "child" reports as detailed in this [blog post](https://martinctc.github.io/blog/first-world-problems-very-long-rmarkdown-documents/)
 
 
