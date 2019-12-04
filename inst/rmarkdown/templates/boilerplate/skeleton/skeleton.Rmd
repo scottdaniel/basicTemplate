@@ -102,7 +102,7 @@ raw_md <- read_tsv(metadata_fp) %>%
 <!-- End, Load data -->
 
 <!-- Begin, Children reports -->
-```{r eval=FALSE, child=here::here("you_child_report_here.Rmd"), include=FALSE}
+```{r child=here::here("you_child_report_here.Rmd")}
 
 #Don't put any code here
 #This is simply a placeholder that instructs this "mother"
