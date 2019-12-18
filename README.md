@@ -1,5 +1,7 @@
 # basicTemplate
 
+## Note: if you'd like to use this in a Rstudio project template, I've created one here: https://github.com/scottdaniel/basicRstudioTemplate
+
 The most basic bioinformatics R markdown template.
 
 This project was created by following this [guide](https://rstudio.github.io/rstudio-extensions/rmarkdown_templates.html) from the friendly folks at Rstudio Inc.
